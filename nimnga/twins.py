@@ -1,13 +1,13 @@
-import numpy as np
 import sys
+import numpy as np
 
 ####################################################################################################
 
 ## twinning mode in 10M NiMnGa
 
-from nimnga import phase # monoclinic phase required
+from . import structure # monoclinic phase required
 
-class Monoclinic(phase.Monoclinic):
+class Monoclinic(structure.Monoclinic):
     
     ## Initialization
     def __init__(self,lattice):
