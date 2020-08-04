@@ -41,7 +41,7 @@ class __Structure:
     
 ####################################################################################################
 
-## Class for Non-modulated NiMnGa
+## Class for cubic NiMnGa
 class Cubic(__Structure):
     
     

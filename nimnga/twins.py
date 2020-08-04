@@ -5,13 +5,12 @@ import numpy as np
 
 ## twinning mode in 10M NiMnGa
 
-from . import structure # monoclinic phase required
-
-class Monoclinic(structure.Monoclinic):
+class Monoclinic:
     
     ## Initialization
-    def __init__(self,lattice):
-        super().__init__(lattice)
+    def __init__(self,obj):
+        self.lattice = obj.lattice
+        self.cartesian = obj.cartesian()
     
     ## function to calculate irrational elements of type I and type II twins
     def __irrational(self):
@@ -48,7 +47,7 @@ class Monoclinic(structure.Monoclinic):
     ## 2' about a direction or plane normal in cartesian coordinates space
     def __pirotation (self,m,pord = 'd'):
         # Obtain 3_P_m transformation matrix
-        Pm = self.cartesian()
+        Pm = self.cartesian
         # if planes
         if pord == 'p':
             m = m @ np.linalg.inv(Pm)
@@ -69,5 +68,8 @@ class Monoclinic(structure.Monoclinic):
                         [2*m3*m1, 2*m3*m2, 2*m3**2-1]])
         # return output variables
         return R
-        
+       
+    def getbugersvector(self,tab,tbe,*args):
+        R = self.__pirotation(*args)
+        return R
 ####################################################################################################
