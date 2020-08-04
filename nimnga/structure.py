@@ -42,6 +42,30 @@ class __Structure:
 ####################################################################################################
 
 ## Class for Non-modulated NiMnGa
+class Cubic(__Structure):
+    
+    
+    ## Initialization
+    def __init__(self, lattice):
+        self.lattice = lattice # a in nm
+    
+    ## Transformation: tetragonal space <-> cartesian space
+    ## c_P_t
+    def cartesian(self):
+        # Obtain lattice parameters
+        a = self.lattice
+        # Transformation to cartesian coordinates
+        # properties: x||a_t, z||c_t
+        caPcu = np.matrix([[a,0.,0.],\
+                        [0.,a,0.], \
+                        [0.,0.,a]])
+        del a
+        # return c_P_t transformation matrix
+        return caPcu
+
+####################################################################################################
+
+## Class for Non-modulated NiMnGa
 class Tetragonal(__Structure):
     
     ## In the non-modulated NiMnGa, c > a
