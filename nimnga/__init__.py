@@ -1,1 +1,2 @@
-from .core import hmm
+import numpy as np
+import sys
